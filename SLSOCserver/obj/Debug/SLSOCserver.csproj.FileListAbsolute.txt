@@ -1,0 +1,6 @@
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\bin\Debug\SLSOCserver.dll.config
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\bin\Debug\SLSOCserver.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\bin\Debug\SLSOCserver.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\obj\Debug\SLSOCserver.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\obj\Debug\SLSOCserver.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\SLSOCserver\SLSOCserver\obj\Debug\SLSOCserver.pdb
