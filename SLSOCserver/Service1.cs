@@ -152,9 +152,9 @@ namespace SLSOCserver
             }
         }
 
-        public Lecturersc SearchLecturers(Lecturersc ls) 
+        public Lecturersc SearchLecturers(Lecturersc ls)
         {
-            Lecturersc ld = new Lecturersc();
+            Lecturersc ld = new Lecturersc(); //ff
             try
             {
                 cmd.CommandText = "SELECT * FROM lecturers WHERE username=@u";
