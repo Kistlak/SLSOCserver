@@ -426,7 +426,97 @@ namespace SLSOCserver
             }
         }
 
+        // Computing Lecs And Stu
 
+        public List<Lecturersc> GetComputingLecturers()
+        {
+            List<Lecturersc> lecdetails = new List<Lecturersc>();
+            try
+            {
+                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',fac AS 'Faculty',modone AS 'Module One',modtwo AS 'Module Two',modthree AS 'Module Three',jdate AS 'Joined Date',rdate AS 'Resigned Date',username AS 'Username',password AS 'Password' FROM lecturers WHERE fac='Computing'";
+                cmd.CommandType = CommandType.Text;
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Lecturersc lecgv = new Lecturersc()
+                    {
+                        Id = reader[0].ToString(),
+                        Fname = reader[1].ToString(),
+                        Lname = reader[2].ToString(),
+                        Adone = reader[3].ToString(),
+                        Adtwo = reader[4].ToString(),
+                        City = reader[5].ToString(),
+                        Number = reader[6].ToString(),
+                        Faculty = reader[7].ToString(),
+                        Moduleone = reader[8].ToString(),
+                        Moduletwo = reader[9].ToString(),
+                        Modulethree = reader[10].ToString(),
+                        Jdate = reader[11].ToString(),
+                        Rdate = reader[12].ToString(),
+                        Username = reader[13].ToString(),
+                        Password = reader[14].ToString()
+                    };
+                    lecdetails.Add(lecgv);
+
+                }
+                return lecdetails;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public List<Studentsc> GetComputingStudents()
+        {
+            List<Studentsc> studetails = new List<Studentsc>();
+            try
+            {
+                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',byear AS 'Birth Year',nic AS 'NIC',fac AS 'Faculty',jdate AS 'Joined Date',username AS 'Username',password AS 'Password' FROM students WHERE fac='Computing'";
+                cmd.CommandType = CommandType.Text;
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Studentsc lecgv = new Studentsc()
+                    {
+                        Id = reader[0].ToString(),
+                        Fname = reader[1].ToString(),
+                        Lname = reader[2].ToString(),
+                        Adone = reader[3].ToString(),
+                        Adtwo = reader[4].ToString(),
+                        City = reader[5].ToString(),
+                        Number = reader[6].ToString(),
+                        Byear = reader[7].ToString(),
+                        Nic = reader[8].ToString(),
+                        Faculty = reader[9].ToString(),
+                        Jdate = reader[10].ToString(),
+                        Username = reader[11].ToString(),
+                        Password = reader[12].ToString()
+                    };
+                    studetails.Add(lecgv);
+
+                }
+                return studetails;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
 
     } // Over Here
 }
