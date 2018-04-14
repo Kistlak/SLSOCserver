@@ -36,20 +36,20 @@ namespace SLSOCserver
         int DeleteLecturers(Lecturersc ldel);
 
 
-        //[OperationContract]
-        //int SaveStudents(Studentsc sd);
+        [OperationContract]
+        int SaveStudents(Studentsc sd);
 
-        //[OperationContract]
-        //List<Studentsc> GetStudentsDetails();
+        [OperationContract]
+        List<Studentsc> GetStudentsDetails();
 
-        //[OperationContract]
-        //Studentsc SearchStudents(Studentsc ss);
+        [OperationContract]
+        Studentsc SearchStudents(Studentsc ss);
 
-        //[OperationContract]
-        //int UpdateStudents(Studentsc su);
+        [OperationContract]
+        int UpdateStudents(Studentsc su);
 
-        //[OperationContract]
-        //int DeleteStudents(Studentsc sdel);
+        [OperationContract]
+        int DeleteStudents(Studentsc sdel);
 
         // TODO: Add your service operations here
     }

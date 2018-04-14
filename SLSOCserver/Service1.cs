@@ -152,13 +152,13 @@ namespace SLSOCserver
             }
         }
 
-        public Lecturersc SearchLecturers(Lecturersc ls)
+        public Lecturersc SearchLecturers(Lecturersc r)
         {
-            Lecturersc ld = new Lecturersc(); //ff
+            Lecturersc ld = new Lecturersc();
             try
             {
                 cmd.CommandText = "SELECT * FROM lecturers WHERE username=@u";
-                cmd.Parameters.AddWithValue("u", ld.Username);
+                cmd.Parameters.AddWithValue("u", r.Username);
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -178,7 +178,7 @@ namespace SLSOCserver
                     ld.Modulethree = reader[9].ToString();
                     ld.Jdate = reader[10].ToString();
                     ld.Rdate = reader[11].ToString();
-                    //ld.Username = reader[12].ToString();
+                    ld.Username = reader[12].ToString();
                 }
                 return ld;
             }
@@ -200,9 +200,10 @@ namespace SLSOCserver
 
             try
             {
-                cmd.CommandText = "UPDATE lecturers set fname=@fname WHERE username=@u";
+                cmd.CommandText = "UPDATE lecturers set fname=@fname, lname=@lname WHERE username=@u";
                 cmd.Parameters.AddWithValue("u", lu.Username);
                 cmd.Parameters.AddWithValue("fname", lu.Fname);
+                cmd.Parameters.AddWithValue("lname", lu.Lname);
                 con.Open();
                 return cmd.ExecuteNonQuery();
 
@@ -246,7 +247,177 @@ namespace SLSOCserver
 
         // Students Section
 
+        public int SaveStudents(Studentsc sd)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO students(fname,lname,adone,adtwo,city,num,byear,nic,fac,jdate,username,password) VALUES (@fn,@ln,@ao,@at,@ct,@nm,@by,@n,@fc,@jd,@u,@p)";
+                cmd.Parameters.AddWithValue("fn", sd.Fname);
+                cmd.Parameters.AddWithValue("ln", sd.Lname);
+                cmd.Parameters.AddWithValue("ao", sd.Adone);
+                cmd.Parameters.AddWithValue("at", sd.Adtwo);
+                cmd.Parameters.AddWithValue("ct", sd.City);
+                cmd.Parameters.AddWithValue("nm", sd.Number);
+                cmd.Parameters.AddWithValue("by", sd.Byear);
+                cmd.Parameters.AddWithValue("n", sd.Nic);
+                cmd.Parameters.AddWithValue("fc", sd.Faculty);
+                cmd.Parameters.AddWithValue("jd", sd.Jdate);
+                cmd.Parameters.AddWithValue("u", sd.Username);
+                cmd.Parameters.AddWithValue("p", sd.Password);
 
+                con.Open();
+                cmd.CommandType = CommandType.Text;
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public List<Studentsc> GetStudentsDetails()
+        {
+            List<Studentsc> lecdetails = new List<Studentsc>();
+            try
+            {
+                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',byear AS 'Birth Year',nic AS 'NIC',fac AS 'Faculty',jdate AS 'Joined Date',username AS 'Username',password AS 'Password' FROM students";
+                cmd.CommandType = CommandType.Text;
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Studentsc lecgv = new Studentsc()
+                    {
+                        Id = reader[0].ToString(),
+                        Fname = reader[1].ToString(),
+                        Lname = reader[2].ToString(),
+                        Adone = reader[3].ToString(),
+                        Adtwo = reader[4].ToString(),
+                        City = reader[5].ToString(),
+                        Number = reader[6].ToString(),
+                        Byear = reader[7].ToString(),
+                        Nic = reader[8].ToString(),
+                        Faculty = reader[9].ToString(),
+                        Jdate = reader[10].ToString(),
+                        Username = reader[11].ToString(),
+                        Password = reader[12].ToString()
+                    };
+                    lecdetails.Add(lecgv);
+
+                }
+                return lecdetails;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public Studentsc SearchStudents(Studentsc p)
+        {
+            Studentsc ld = new Studentsc();
+            try
+            {
+                cmd.CommandText = "SELECT * FROM students WHERE username=@u";
+                cmd.Parameters.AddWithValue("u", p.Username);
+                cmd.CommandType = CommandType.Text;
+
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ld.Fname = reader[0].ToString();
+                    ld.Lname = reader[1].ToString();
+                    ld.Adone = reader[2].ToString();
+                    ld.Adtwo = reader[3].ToString();
+                    ld.City = reader[4].ToString();
+                    ld.Number = reader[5].ToString();
+                    ld.Byear = reader[6].ToString();
+                    ld.Nic = reader[7].ToString();
+                    ld.Faculty = reader[8].ToString();
+                    ld.Jdate = reader[10].ToString();
+                    ld.Username = reader[12].ToString();
+                }
+                return ld;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public int UpdateStudents(Studentsc su)
+        {
+
+            try
+            {
+                cmd.CommandText = "UPDATE students SET fname=@fn WHERE username=@u";
+                cmd.Parameters.AddWithValue("u", su.Username);
+                cmd.Parameters.AddWithValue("fn", su.Fname);
+                //cmd.Parameters.AddWithValue("ln", su.Lname);
+                //cmd.Parameters.AddWithValue("ao", su.Adone);
+                //cmd.Parameters.AddWithValue("at", su.Adtwo);
+                //cmd.Parameters.AddWithValue("ct", su.City);
+                //cmd.Parameters.AddWithValue("nm", su.Number);
+                //cmd.Parameters.AddWithValue("by", su.Byear);
+                //cmd.Parameters.AddWithValue("n", su.Nic);
+                //cmd.Parameters.AddWithValue("p", su.Password);
+
+                con.Open();
+                return cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+        public int DeleteStudents(Studentsc sdel)
+        {
+            try
+            {
+                cmd.CommandText = "DELETE students WHERE username=@u";
+                cmd.Parameters.AddWithValue("u", sdel.Username);
+                cmd.CommandType = CommandType.Text;
+                con.Open();
+
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
 
 
 
