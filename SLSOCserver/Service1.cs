@@ -287,7 +287,7 @@ namespace SLSOCserver
 
         public List<Studentsc> GetStudentsDetails()
         {
-            List<Studentsc> lecdetails = new List<Studentsc>();
+            List<Studentsc> studetails = new List<Studentsc>();
             try
             {
                 cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',byear AS 'Birth Year',nic AS 'NIC',fac AS 'Faculty',jdate AS 'Joined Date',username AS 'Username',password AS 'Password' FROM students";
@@ -313,10 +313,10 @@ namespace SLSOCserver
                         Username = reader[11].ToString(),
                         Password = reader[12].ToString()
                     };
-                    lecdetails.Add(lecgv);
+                    studetails.Add(lecgv);
 
                 }
-                return lecdetails;
+                return studetails;
 
             }
             catch (Exception) { throw; }
@@ -351,9 +351,9 @@ namespace SLSOCserver
                     ld.Number = reader[5].ToString();
                     ld.Byear = reader[6].ToString();
                     ld.Nic = reader[7].ToString();
-                    ld.Faculty = reader[8].ToString();
+                    ld.Faculty = reader[9].ToString();
                     ld.Jdate = reader[10].ToString();
-                    ld.Username = reader[12].ToString();
+                    ld.Username = reader[11].ToString();
                 }
                 return ld;
             }
