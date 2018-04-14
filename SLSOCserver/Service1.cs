@@ -370,23 +370,21 @@ namespace SLSOCserver
             }
         }
 
-        public int UpdateStudents(Studentsc su)
+        public int UpdateStudents(Studentsc lu)
         {
 
             try
             {
-                cmd.CommandText = "UPDATE students SET fname=@fn WHERE username=@u";
-                cmd.Parameters.AddWithValue("u", su.Username);
-                cmd.Parameters.AddWithValue("fn", su.Fname);
-                //cmd.Parameters.AddWithValue("ln", su.Lname);
-                //cmd.Parameters.AddWithValue("ao", su.Adone);
-                //cmd.Parameters.AddWithValue("at", su.Adtwo);
-                //cmd.Parameters.AddWithValue("ct", su.City);
-                //cmd.Parameters.AddWithValue("nm", su.Number);
-                //cmd.Parameters.AddWithValue("by", su.Byear);
-                //cmd.Parameters.AddWithValue("n", su.Nic);
-                //cmd.Parameters.AddWithValue("p", su.Password);
-
+                cmd.CommandText = "UPDATE students set fname=@fname, lname=@lname, adone=@ao, adtwo=@at, city=@ct, num=@nm, nic=@nic, username=@u, password=@p WHERE username=@u";
+                cmd.Parameters.AddWithValue("u", lu.Username);
+                cmd.Parameters.AddWithValue("fname", lu.Fname);
+                cmd.Parameters.AddWithValue("lname", lu.Lname);
+                cmd.Parameters.AddWithValue("ao", lu.Adone);
+                cmd.Parameters.AddWithValue("at", lu.Adtwo);
+                cmd.Parameters.AddWithValue("ct", lu.City);
+                cmd.Parameters.AddWithValue("nm", lu.Number);
+                cmd.Parameters.AddWithValue("nic", lu.Nic);
+                cmd.Parameters.AddWithValue("p", lu.Password);
                 con.Open();
                 return cmd.ExecuteNonQuery();
 
