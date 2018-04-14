@@ -200,10 +200,19 @@ namespace SLSOCserver
 
             try
             {
-                cmd.CommandText = "UPDATE lecturers set fname=@fname, lname=@lname WHERE username=@u";
+                cmd.CommandText = "UPDATE lecturers set fname=@fname, lname=@lname, adone=@ao, adtwo=@at, city=@ct, num=@nm, modone=@mo, modtwo=@mtw, modthree=@mtr, rdate=@rd, username=@u, password=@p WHERE username=@u";
                 cmd.Parameters.AddWithValue("u", lu.Username);
                 cmd.Parameters.AddWithValue("fname", lu.Fname);
                 cmd.Parameters.AddWithValue("lname", lu.Lname);
+                cmd.Parameters.AddWithValue("ao", lu.Adone);
+                cmd.Parameters.AddWithValue("at", lu.Adtwo);
+                cmd.Parameters.AddWithValue("ct", lu.City);
+                cmd.Parameters.AddWithValue("nm", lu.Number);
+                cmd.Parameters.AddWithValue("mo", lu.Moduleone);
+                cmd.Parameters.AddWithValue("mtw", lu.Moduletwo);
+                cmd.Parameters.AddWithValue("mtr", lu.Modulethree);
+                cmd.Parameters.AddWithValue("rd", lu.Rdate);
+                cmd.Parameters.AddWithValue("p", lu.Password);
                 con.Open();
                 return cmd.ExecuteNonQuery();
 
