@@ -46,9 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService1.cs" />
+    <Compile Include="IService2.cs" />
     <Compile Include="Lecturersc.cs" />
+    <Compile Include="Modulesc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
+    <Compile Include="Service2.cs" />
     <Compile Include="Studentsc.cs" />
     <Compile Include="Users.cs" />
   </ItemGroup>

@@ -518,5 +518,97 @@ namespace SLSOCserver
             }
         }
 
+        public Lecturersc SearchLecsForm(string Username)
+        {
+            cmd.CommandText = "SELECT * FROM lecturers WHERE username=@u";
+            try
+            {
+                
+                cmd.Parameters.AddWithValue("u", Username);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    Lecturersc u = new Lecturersc();
+                    while (reader.Read())
+                    {
+                        u.Fname = reader["fname"].ToString();
+                        u.Lname = reader["lname"].ToString();
+                        u.Adone = reader["adone"].ToString();
+                        u.Adtwo = reader["adtwo"].ToString();
+                        u.City = reader["city"].ToString();
+                        u.Number = reader["num"].ToString();
+                        u.Faculty = reader["fac"].ToString();
+                        u.Moduleone = reader["modone"].ToString();
+                        u.Moduletwo = reader["modtwo"].ToString();
+                        u.Modulethree = reader["modthree"].ToString();
+                        u.Jdate = reader["jdate"].ToString();
+                        u.Rdate = reader["rdate"].ToString();
+                        u.Username = reader["username"].ToString();
+                        u.Password = reader["password"].ToString();
+                    }
+
+                    return u;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public Studentsc SearchStuForm(string Username)
+        {
+            cmd.CommandText = "SELECT * FROM students WHERE username=@u";
+            try
+            {
+
+                cmd.Parameters.AddWithValue("u", Username);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    Studentsc u = new Studentsc();
+                    while (reader.Read())
+                    {
+                        u.Fname = reader["fname"].ToString();
+                        u.Lname = reader["lname"].ToString();
+                        u.Adone = reader["adone"].ToString();
+                        u.Adtwo = reader["adtwo"].ToString();
+                        u.City = reader["city"].ToString();
+                        u.Number = reader["num"].ToString();
+                        u.Byear = reader["byear"].ToString();
+                        u.Nic = reader["nic"].ToString();
+                        u.Faculty = reader["fac"].ToString();
+                        u.Jdate = reader["jdate"].ToString();
+                        u.Username = reader["username"].ToString();
+                        u.Password = reader["password"].ToString();
+                    }
+
+                    return u;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
     } // Over Here
 }

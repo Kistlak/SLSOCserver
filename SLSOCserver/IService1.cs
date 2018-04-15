@@ -58,6 +58,12 @@ namespace SLSOCserver
         [OperationContract]
         List<Studentsc> GetComputingStudents();
 
+        [OperationContract]
+        Lecturersc SearchLecsForm(string Username);
+
+        [OperationContract]
+        Studentsc SearchStuForm(string Username);
+
         // TODO: Add your service operations here
     }
 
