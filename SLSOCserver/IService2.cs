@@ -14,6 +14,18 @@ namespace SLSOCserver
         [OperationContract]
         int AddModules(Modulesc md);
 
+        [OperationContract]
+        Modulesc SearchModules(string Modcode);
+
+        [OperationContract]
+        List<Modulesc> GetComModules();
+
+        [OperationContract]
+        int UpdateComModules(Modulesc cmu);
+
+        [OperationContract]
+        int DeleteComModules(Modulesc cmdel);
+
         //[OperationContract]
         //List<Lecturersc> GetComputingLecs();
 
