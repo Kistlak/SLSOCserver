@@ -7,9 +7,9 @@ using System.Text;
 
 namespace SLSOCserver
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService2" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService3" in both code and config file together.
     [ServiceContract]
-    public interface IService2
+    public interface IService3
     {
         [OperationContract]
         int AddModules(Modulesc md);
@@ -66,10 +66,10 @@ namespace SLSOCserver
         List<Timetablesc> GetComTimetables();
 
         [OperationContract]
-        List<Lecturersc> GetComputingLecturers();
+        List<Lecturersc> GetBusinessLecturers();
 
         [OperationContract]
-        List<Studentsc> GetComputingStudents();
+        List<Studentsc> GetBusinessStudents();
 
         [OperationContract]
         Lecturersc SearchLecturers(Lecturersc ls);

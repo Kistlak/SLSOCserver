@@ -9,10 +9,10 @@ using System.Text;
 
 namespace SLSOCserver
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service2" in both code and config file together.
-    public class Service2 : IService2
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service4" in both code and config file together.
+    public class Service4 : IService4
     {
-        public Service2()
+        public Service4()
         {
             ConnectDb();
         }
@@ -49,7 +49,7 @@ namespace SLSOCserver
         {
             try
             {
-                cmd.CommandText = "INSERT INTO modules(modcode,modname,lecname,fac) VALUES (@mc,@mn,@l,'Computing')";
+                cmd.CommandText = "INSERT INTO modules(modcode,modname,lecname,fac) VALUES (@mc,@mn,@l,'Engineering')";
                 cmd.Parameters.AddWithValue("mc", md.Modcode);
                 cmd.Parameters.AddWithValue("mn", md.Modname);
                 cmd.Parameters.AddWithValue("l", md.Lecname);
@@ -106,7 +106,7 @@ namespace SLSOCserver
             List<Modulesc> studetails = new List<Modulesc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',modcode AS 'Mode Code',modname AS 'Mode Name',lecname AS 'Lec Name' FROM modules WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',modcode AS 'Mode Code',modname AS 'Mode Name',lecname AS 'Lec Name' FROM modules WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -141,7 +141,7 @@ namespace SLSOCserver
 
             try
             {
-                cmd.CommandText = "UPDATE modules set modcode=@mc, modname=@mn, lecname=@ln, fac='Computing' WHERE modcode=@mc";
+                cmd.CommandText = "UPDATE modules set modcode=@mc, modname=@mn, lecname=@ln, fac='Engineering' WHERE modcode=@mc";
                 cmd.Parameters.AddWithValue("mc", cmu.Modcode);
                 cmd.Parameters.AddWithValue("mn", cmu.Modname);
                 cmd.Parameters.AddWithValue("ln", cmu.Lecname);
@@ -192,7 +192,7 @@ namespace SLSOCserver
         {
             try
             {
-                cmd.CommandText = "INSERT INTO lechalls(lechallcode,numstu,fac) VALUES (@lhc,@ns,'Computing')";
+                cmd.CommandText = "INSERT INTO lechalls(lechallcode,numstu,fac) VALUES (@lhc,@ns,'Engineering')";
                 cmd.Parameters.AddWithValue("lhc", lhd.Lechallcode);
                 cmd.Parameters.AddWithValue("ns", lhd.Numstu);
 
@@ -247,7 +247,7 @@ namespace SLSOCserver
             List<Lechallsc> studetails = new List<Lechallsc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',lechallcode AS 'Hall Code',numstu AS 'Stu Number' FROM lechalls WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',lechallcode AS 'Hall Code',numstu AS 'Stu Number' FROM lechalls WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -281,7 +281,7 @@ namespace SLSOCserver
 
             try
             {
-                cmd.CommandText = "UPDATE lechalls set lechallcode=@lhc, numstu=@ns, fac='Computing' WHERE lechallcode=@lhc";
+                cmd.CommandText = "UPDATE lechalls set lechallcode=@lhc, numstu=@ns, fac='Engineering' WHERE lechallcode=@lhc";
                 cmd.Parameters.AddWithValue("lhc", clhu.Lechallcode);
                 cmd.Parameters.AddWithValue("ns", clhu.Numstu);
                 con.Open();
@@ -331,7 +331,7 @@ namespace SLSOCserver
         {
             try
             {
-                cmd.CommandText = "INSERT INTO labs(labcode,numstu,fac) VALUES (@lbc,@ns,'Computing')";
+                cmd.CommandText = "INSERT INTO labs(labcode,numstu,fac) VALUES (@lbc,@ns,'Engineering')";
                 cmd.Parameters.AddWithValue("lbc", lbd.Labcode);
                 cmd.Parameters.AddWithValue("ns", lbd.Numstu);
 
@@ -386,7 +386,7 @@ namespace SLSOCserver
             List<Labsc> studetails = new List<Labsc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',labcode AS 'Lab Code',numstu AS 'Stu Number' FROM labs WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',labcode AS 'Lab Code',numstu AS 'Stu Number' FROM labs WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -420,7 +420,7 @@ namespace SLSOCserver
 
             try
             {
-                cmd.CommandText = "UPDATE labs set labcode=@lbc, numstu=@ns, fac='Computing' WHERE labcode=@lbc";
+                cmd.CommandText = "UPDATE labs set labcode=@lbc, numstu=@ns, fac='Engineering' WHERE labcode=@lbc";
                 cmd.Parameters.AddWithValue("lbc", clbu.Labcode);
                 cmd.Parameters.AddWithValue("ns", clbu.Numstu);
                 con.Open();
@@ -470,7 +470,7 @@ namespace SLSOCserver
         {
             try
             {
-                cmd.CommandText = "INSERT INTO timetables(date,time,batch,modcode,lecname,lechall,lab,fac) VALUES (@d,@t,@b,@mc,@ln,@lh,@lb,'Computing')";
+                cmd.CommandText = "INSERT INTO timetables(date,time,batch,modcode,lecname,lechall,lab,fac) VALUES (@d,@t,@b,@mc,@ln,@lh,@lb,'Engineering')";
                 cmd.Parameters.AddWithValue("d", td.Date);
                 cmd.Parameters.AddWithValue("t", td.Time);
                 cmd.Parameters.AddWithValue("b", td.Batch);
@@ -495,7 +495,7 @@ namespace SLSOCserver
             List<Timetablesc> studetails = new List<Timetablesc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',date AS 'Date',time AS 'Time',batch AS 'Batch',modcode AS 'Module Code',lecname AS 'Lec Name',lechall AS 'Lec Hall',lab AS 'Lab' FROM timetables WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',date AS 'Date',time AS 'Time',batch AS 'Batch',modcode AS 'Module Code',lecname AS 'Lec Name',lechall AS 'Lec Hall',lab AS 'Lab' FROM timetables WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -529,12 +529,12 @@ namespace SLSOCserver
             }
         }
 
-        public List<Lecturersc> GetComputingLecturers()
+        public List<Lecturersc> GetEngineeringLecturers()
         {
             List<Lecturersc> lecdetails = new List<Lecturersc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',fac AS 'Faculty',modone AS 'Module One',modtwo AS 'Module Two',modthree AS 'Module Three',jdate AS 'Joined Date',rdate AS 'Resigned Date',username AS 'Username',password AS 'Password' FROM lecturers WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',fac AS 'Faculty',modone AS 'Module One',modtwo AS 'Module Two',modthree AS 'Module Three',jdate AS 'Joined Date',rdate AS 'Resigned Date',username AS 'Username',password AS 'Password' FROM lecturers WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -575,12 +575,12 @@ namespace SLSOCserver
             }
         }
 
-        public List<Studentsc> GetComputingStudents()
+        public List<Studentsc> GetEngineeringStudents()
         {
             List<Studentsc> studetails = new List<Studentsc>();
             try
             {
-                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',byear AS 'Birth Year',nic AS 'NIC',fac AS 'Faculty',jdate AS 'Joined Date',username AS 'Username',password AS 'Password' FROM students WHERE fac='Computing'";
+                cmd.CommandText = "SELECT id AS 'Explorer',fname AS 'First Name',lname AS 'Last Name',adone AS 'Address One',adtwo AS 'Address Two',city AS 'City',num AS 'Mobile Number',byear AS 'Birth Year',nic AS 'NIC',fac AS 'Faculty',jdate AS 'Joined Date',username AS 'Username',password AS 'Password' FROM students WHERE fac='Engineering'";
                 cmd.CommandType = CommandType.Text;
 
                 con.Open();
@@ -624,7 +624,7 @@ namespace SLSOCserver
             Lecturersc ld = new Lecturersc();
             try
             {
-                cmd.CommandText = "SELECT * FROM lecturers WHERE username=@u AND fac='Computing'";
+                cmd.CommandText = "SELECT * FROM lecturers WHERE username=@u AND fac='Engineering'";
                 cmd.Parameters.AddWithValue("u", r.Username);
                 cmd.CommandType = CommandType.Text;
 
@@ -667,7 +667,7 @@ namespace SLSOCserver
             Studentsc ld = new Studentsc();
             try
             {
-                cmd.CommandText = "SELECT * FROM students WHERE username=@u AND fac='Computing'";
+                cmd.CommandText = "SELECT * FROM students WHERE username=@u AND fac='Engineering'";
                 cmd.Parameters.AddWithValue("u", p.Username);
                 cmd.CommandType = CommandType.Text;
 

@@ -51,13 +51,6 @@ namespace SLSOCserver
         [OperationContract]
         int DeleteStudents(Studentsc sdel);
 
-
-        [OperationContract]
-        List<Lecturersc> GetComputingLecturers();
-
-        [OperationContract]
-        List<Studentsc> GetComputingStudents();
-
         [OperationContract]
         Lecturersc SearchLecsForm(string Username);
 
