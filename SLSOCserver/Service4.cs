@@ -703,5 +703,39 @@ namespace SLSOCserver
             }
         }
 
+        public List<Feedbacksc> GetEngFeedbacks()
+        {
+            List<Feedbacksc> studetails = new List<Feedbacksc>();
+            try
+            {
+                cmd.CommandText = "SELECT id AS 'Explorer',modcode AS 'Module Code',feedback AS 'Feedback' FROM feedbacks WHERE fac='Engineering'";
+                cmd.CommandType = CommandType.Text;
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Feedbacksc lecgv = new Feedbacksc()
+                    {
+                        Id = reader[0].ToString(),
+                        Modcode = reader[1].ToString(),
+                        Feedback = reader[2].ToString(),
+                    };
+                    studetails.Add(lecgv);
+
+                }
+                return studetails;
+
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
     } // Over Here
 }

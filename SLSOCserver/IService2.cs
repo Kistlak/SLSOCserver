@@ -77,5 +77,8 @@ namespace SLSOCserver
         [OperationContract]
         Studentsc SearchStudents(Studentsc ss);
 
+        [OperationContract]
+        List<Feedbacksc> GetComFeedbacks();
+
     }
 }

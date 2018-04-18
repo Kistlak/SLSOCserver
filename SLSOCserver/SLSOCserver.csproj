@@ -46,10 +46,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feedbacksc.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="IService2.cs" />
     <Compile Include="IService3.cs" />
     <Compile Include="IService4.cs" />
+    <Compile Include="IService5.cs" />
     <Compile Include="Labsc.cs" />
     <Compile Include="Lechallsc.cs" />
     <Compile Include="Lecturersc.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Service2.cs" />
     <Compile Include="Service3.cs" />
     <Compile Include="Service4.cs" />
+    <Compile Include="Service5.cs" />
     <Compile Include="Studentsc.cs" />
     <Compile Include="Timetablesc.cs" />
     <Compile Include="Users.cs" />
