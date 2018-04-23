@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 
@@ -75,6 +76,16 @@ namespace SLSOCserver
             return ans;
         }
 
+        static string Encrypt(string value)
+        {
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
+                return Convert.ToBase64String(data);
+            }
+        }
+
         public int SaveLecturers(Lecturersc ld)
         {
             try
@@ -93,7 +104,7 @@ namespace SLSOCserver
                 cmd.Parameters.AddWithValue("jd", ld.Jdate);
                 cmd.Parameters.AddWithValue("rd", ld.Rdate);
                 cmd.Parameters.AddWithValue("u", ld.Username);
-                cmd.Parameters.AddWithValue("p", ld.Password);
+                cmd.Parameters.AddWithValue("p", Encrypt(ld.Password));
 
                 con.Open();
                 cmd.CommandType = CommandType.Text;
@@ -212,7 +223,7 @@ namespace SLSOCserver
                 cmd.Parameters.AddWithValue("mtw", lu.Moduletwo);
                 cmd.Parameters.AddWithValue("mtr", lu.Modulethree);
                 cmd.Parameters.AddWithValue("rd", lu.Rdate);
-                cmd.Parameters.AddWithValue("p", lu.Password);
+                cmd.Parameters.AddWithValue("p", Encrypt(lu.Password));
                 con.Open();
                 return cmd.ExecuteNonQuery();
 
@@ -272,7 +283,7 @@ namespace SLSOCserver
                 cmd.Parameters.AddWithValue("fc", sd.Faculty);
                 cmd.Parameters.AddWithValue("jd", sd.Jdate);
                 cmd.Parameters.AddWithValue("u", sd.Username);
-                cmd.Parameters.AddWithValue("p", sd.Password);
+                cmd.Parameters.AddWithValue("p", Encrypt(sd.Password));
 
                 con.Open();
                 cmd.CommandType = CommandType.Text;
@@ -385,7 +396,7 @@ namespace SLSOCserver
                 cmd.Parameters.AddWithValue("nm", lu.Number);
                 cmd.Parameters.AddWithValue("nic", lu.Nic);
                 cmd.Parameters.AddWithValue("Jd", lu.Jdate);
-                cmd.Parameters.AddWithValue("p", lu.Password);
+                cmd.Parameters.AddWithValue("p", Encrypt(lu.Password));
                 con.Open();
                 return cmd.ExecuteNonQuery();
 
